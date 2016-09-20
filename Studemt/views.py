@@ -17,20 +17,26 @@ def index(request):
 def register(request):
     if request.method == 'GET':
         form = StudentRegisterForm()
-        return render(request, 'Studemt/register.html', {'form': form})
+        return render(request, 'Studemt/register.html', {'form': form, 'preference_form': ApplicationForm()})
     else:
         username = request.POST.get('username')
         firstname = request.POST.get('firstname')
         lastname = request.POST.get('lastname')
         password = request.POST.get('password')
+        application_form = ApplicationForm(request.POST)
         user = User(username=username, first_name=firstname, last_name=lastname)
         user.set_password(password)
         user.save()
         form = StudentRegisterForm(request.POST)
-        if form.is_valid():
+        if form.is_valid() and application_form.is_valid():
             student = form.save(commit=False)
+            application_f = application_form.save(commit=False)
+            application_f.serial = 0
+            application_f.student = user
+            application_f.date_time = timezone.now()
             student.student = user
             student.save()
+            application_f.save()
         return HttpResponse("Successfully Registered")
 
 
