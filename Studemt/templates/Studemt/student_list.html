@@ -1,0 +1,33 @@
+{% extends 'Studemt/base.html' %}
+{% block body %}
+    <h4>Student List</h4>
+    <table class="table table-responsive table-striped table-condensed table-hover">
+        <thead class="thead-inverse">
+
+            <tr>
+            <th>Rank</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>First Preference</th>
+            <th>Second Preference</th>
+            <th>Third Preference</th>
+            <th>Fourth Preference</th>
+        </tr>
+
+        </thead>
+        <tbody>
+            {% for student in students %}
+                <tr onclick="location.href='{% url 'student:application' %}'">
+                    <td>{{ student.rank }}</td>
+                    <td>{{ student.student.first_name }}</td>
+                    <td>{{ student.student.last_name }}</td>
+                    <td>{{ student.student.hello.first_pref.stream }}</td>
+                    <td>{{ student.student.hello.second_pref.stream }}</td>
+                    <td>{{ student.student.hello.third_pref.stream }}</td>
+                    <td>{{ student.student.hello.fourth_pref.stream }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}
