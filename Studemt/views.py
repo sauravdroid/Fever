@@ -17,7 +17,9 @@ def index(request):
 def register(request):
     if request.method == 'GET':
         form = StudentRegisterForm()
-        return render(request, 'Studemt/register.html', {'form': form, 'preference_form': ApplicationForm()})
+        subjects = Subject.objects.all()
+        return render(request, 'Studemt/register.html',
+                      {'form': form, 'preference_form': ApplicationForm(), 'subjects': subjects})
     else:
         username = request.POST.get('username')
         firstname = request.POST.get('firstname')
@@ -84,3 +86,8 @@ def student_list(request):
         students = Student.objects.order_by('rank')
         hello_set = Hello.objects.all()
         return render(request, 'Studemt/student_list.html', {'students': students, 'hello_set': hello_set})
+
+
+def demo(request):
+    subjects = Subject.objects.all()
+    return render(request, 'Studemt/app_js.html', {'subjects': subjects})
