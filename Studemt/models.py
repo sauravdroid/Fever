@@ -35,7 +35,7 @@ class Subject(models.Model):
 class Hello(models.Model):
     serial = models.IntegerField()
     student = models.OneToOneField(User, on_delete=models.CASCADE)
-    first_pref = models.ForeignKey(Subject, related_name='first')
+    first_pref = models.ForeignKey(Subject, related_name='first',null=True)
     second_pref = models.ForeignKey(Subject, related_name='second', null=True, blank=True)
     third_pref = models.ForeignKey(Subject, related_name='third', null=True, blank=True)
     fourth_pref = models.ForeignKey(Subject, related_name='fourth', null=True, blank=True)
