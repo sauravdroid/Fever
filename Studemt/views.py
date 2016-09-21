@@ -11,7 +11,7 @@ from django.utils import timezone
 # Create your views here.
 
 def index(request):
-    return HttpResponse("Hey You")
+    return render(request,'Studemt/index.html')
 
 
 def register(request):

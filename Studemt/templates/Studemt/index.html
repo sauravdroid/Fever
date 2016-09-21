@@ -1,0 +1,12 @@
+{% extends 'Studemt/base.html' %}
+{% block body %}
+    <div class="well well-sm" style="background: #fff">
+        <h4 style="color: #31708f">The following list can be visited for Student Registration</h4>
+        <a class="code" href="{% url 'student:register' %}"><code>Student Registration</code></a>
+    </div>
+
+    <div class="well well-sm" style="background: #fff">
+        <h4 style="color: #31708f">The following list can be visited for the Student List</h4>
+        <a href="{% url 'student:student_list' %}"><code>Student List</code></a>
+    </div>
+{% endblock %}
