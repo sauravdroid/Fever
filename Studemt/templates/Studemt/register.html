@@ -8,37 +8,40 @@
         {% csrf_token %}
         <table>
             {{ form.as_table }}
-            <div>
-                First Preference: <select name="first_pref" id="first_pref">
-                <option selected disabled>Select Preference</option>
-                {% for subject in subjects %}
-                    <option value="{{ subject.id }}">{{ subject.stream }}</option>
-                {% endfor %}
-            </select>
-            </div>
-            <div style="margin-top: 20px;">
-                Second Preference: <select name="second_pref" id="second_pref">
-                <option selected disabled>Select Preference</option>
-                {% for subject in subjects %}
-                    <option value="{{ subject.id }}">{{ subject.stream }}</option>
-                {% endfor %}
-            </select>
-            </div>
-            <div style="margin-top: 20px;">
-                Third Preference: <select name="third_pref" id="third_pref">
-                <option selected disabled>Select Preference</option>
-                {% for subject in subjects %}
-                    <option value="{{ subject.id }}">{{ subject.stream }}</option>
-                {% endfor %}
-            </select>
-            </div>
-            <div style="margin-top: 20px;">
-                Fourth Preference: <select name="fourth_pref" id="fourth_pref">
-                <option selected disabled>Select Preference</option>
-                {% for subject in subjects %}
-                    <option value="{{ subject.id }}">{{ subject.stream }}</option>
-                {% endfor %}
-            </select>
+            <div class="well well-sm">
+                <div>
+                    First Preference: <select name="first_pref" id="first_pref">
+                    <option selected disabled>Select Preference</option>
+                    {% for subject in subjects %}
+                        <option value="{{ subject.id }}">{{ subject.stream }}</option>
+                    {% endfor %}
+                </select>
+                </div>
+                <div style="margin-top: 20px;">
+                    Second Preference: <select name="second_pref" id="second_pref">
+                    <option selected disabled>Select Preference</option>
+                    {% for subject in subjects %}
+                        <option value="{{ subject.id }}">{{ subject.stream }}</option>
+                    {% endfor %}
+                </select>
+                </div>
+                <div style="margin-top: 20px;">
+                    Third Preference: <select name="third_pref" id="third_pref">
+                    <option selected disabled>Select Preference</option>
+                    {% for subject in subjects %}
+                        <option value="{{ subject.id }}">{{ subject.stream }}</option>
+                    {% endfor %}
+                </select>
+                </div>
+                <div style="margin-top: 20px;">
+                    Fourth Preference: <select name="fourth_pref" id="fourth_pref">
+                    <option selected disabled>Select Preference</option>
+                    {% for subject in subjects %}
+                        <option value="{{ subject.id }}">{{ subject.stream }}</option>
+                    {% endfor %}
+                </select>
+                </div>
+                Small Well
             </div>
         </table>
         <button type="submit">Register</button>
