@@ -1,53 +1,70 @@
 {% extends 'Studemt/base.html' %}
 {% block body %}
+    <h2>Student Registration Form:</h2>
     <form method="post" action="">
-        <input type="text" name="username" placeholder="Username" required>
-        <input type="text" name="password" placeholder="Password" required>
-        <input type="text" name="firstname" placeholder="Firstname" required>
-        <input type="text" name="lastname" placeholder="Lastname" required>
+        <div class="well well-sm">
+            <input type="text" name="username" placeholder="Username" required>
+            <input type="text" name="password" placeholder="Password" required>
+            <input type="text" name="firstname" placeholder="Firstname" required>
+            <input type="text" name="lastname" placeholder="Lastname" required>
+        </div>
         {% csrf_token %}
-        <table>
-            {{ form.as_table }}
-            <div class="well well-sm">
-                <div>
-                    First Preference: <select name="first_pref" id="first_pref">
-                    <option selected disabled>Select Preference</option>
-                    {% for subject in subjects %}
-                        <option value="{{ subject.id }}">{{ subject.stream }}</option>
-                    {% endfor %}
-                </select>
-                </div>
-                <div style="margin-top: 20px;">
-                    Second Preference: <select name="second_pref" id="second_pref">
-                    <option selected disabled>Select Preference</option>
-                    {% for subject in subjects %}
-                        <option value="{{ subject.id }}">{{ subject.stream }}</option>
-                    {% endfor %}
-                </select>
-                </div>
-                <div style="margin-top: 20px;">
-                    Third Preference: <select name="third_pref" id="third_pref">
-                    <option selected disabled>Select Preference</option>
-                    {% for subject in subjects %}
-                        <option value="{{ subject.id }}">{{ subject.stream }}</option>
-                    {% endfor %}
-                </select>
-                </div>
-                <div style="margin-top: 20px;">
-                    Fourth Preference: <select name="fourth_pref" id="fourth_pref">
-                    <option selected disabled>Select Preference</option>
-                    {% for subject in subjects %}
-                        <option value="{{ subject.id }}">{{ subject.stream }}</option>
-                    {% endfor %}
-                </select>
-                </div>
-                Small Well
+        <div class="well well-lg">
+            <table>
+                {{ form.as_table }}
+
+            </table>
+        </div>
+        <div class="well well-sm">
+            <div>
+                First Preference: <select name="first_pref" id="first_pref">
+                <option value="" selected="selected">Select Preference</option>
+                {% for subject in subjects %}
+                    <option value="{{ subject.id }}">{{ subject.stream }}</option>
+                {% endfor %}
+            </select>
             </div>
-        </table>
-        <button type="submit">Register</button>
+            <div style="margin-top: 20px;">
+                Second Preference: <select name="second_pref" id="second_pref">
+                <option value="" selected="selected">Select Preference</option>
+                {% for subject in subjects %}
+                    <option value="{{ subject.id }}">{{ subject.stream }}</option>
+                {% endfor %}
+            </select>
+            </div>
+            <div style="margin-top: 20px;">
+                Third Preference: <select name="third_pref" id="third_pref">
+                <option value="" selected="selected">Select Preference</option>
+                {% for subject in subjects %}
+                    <option value="{{ subject.id }}">{{ subject.stream }}</option>
+                {% endfor %}
+            </select>
+            </div>
+            <div style="margin-top: 20px;">
+                Fourth Preference: <select name="fourth_pref" id="fourth_pref">
+                <option value="" selected="selected">Select Preference</option>
+                {% for subject in subjects %}
+                    <option value="{{ subject.id }}">{{ subject.stream }}</option>
+                {% endfor %}
+            </select>
+            </div>
+            <button class="submit-button" type="submit">Register</button>
+        </div>
+
     </form>
     <script type="text/javascript">
         $(document).ready(function () {
+            $("input").prop('required', true);
+            $("textarea").prop('required', true);
+            $("select").prop('required', true);
+
+
+            $("#first_pref").prop('required', true);
+            $("#second_pref").prop('required', false);
+            $("#third_pref").prop('required', false);
+            $("#fourth_pref").prop('required', false);
+
+
             $('#second_pref').css('transform', 'scale(0,0)');
             $('#third_pref').css('transform', 'scale(0,0)');
             $('#fourth_pref').css('transform', 'scale(0,0)');

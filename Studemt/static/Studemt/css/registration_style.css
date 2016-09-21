@@ -1,0 +1,16 @@
+h2{
+    padding: 0;
+    margin: 0;
+    margin-bottom: 20px;
+    margin-left: 30px;
+}
+.well{
+    margin: 20px 30px;
+}
+
+.submit-button{
+    position: absolute;
+    right: 30px;
+    margin-top: -30px;
+    margin-right: 20px;
+}
